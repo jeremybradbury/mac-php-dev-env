@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#
 ## lamp.sh ## We are not using any mac/MAMP tools.
 # Instead we homebrew our own LAMP stack using standard linux folder locations.
 # The guys at echo have built a really good script, but it's in the form of read then copy (which is super nice!)
