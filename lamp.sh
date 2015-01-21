@@ -9,13 +9,19 @@
 ##
 #
 ### constants ###
-s_title='Customizable Homebrew LAMP stack script (for Mac OSX 10.10 Yosemite)';
+e_error='\x1b[31;01m[error]:\x1b[0m';            # red
+e_warn='\x1b[33;01m[warning]:\x1b[0m';           # yellow
+e_success='\x1b[32;01m[success]:\x1b[0m';        # green
+e_info='\x1b[30;01m[inform]:\x1b[0m';            # black
+e_input='\x1b[34;01m[input required]:\x1b[0m';   # blue
+s_title='Customizable Homebrew LAMP Stack (for Mac OSX 10.10 Yosemite)';
+s_ref='https://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew';
 ### /constants ###
 #
 ### intro ###
 echo -e "<\x1b[01mlamp.sh\x1b[0m>\x1b[01m";
 echo -e "$s_title\x1b[0m";
-echo -e "based on: \x1b[34;04mhttps://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew\x1b[0m";
+echo -e "based on: \x1b[34;04m$s_ref\x1b[0m";
 echo
 echo -e "$e_info this script is a tool for developers to save time";
 echo -e "$e_info some beginners may find this useful for getting setup";
@@ -295,11 +301,11 @@ sudo bash -c 'echo "port 35353" >> /etc/resolver/dev'
 ### test *.dev routing ###
 if [[ "$(ping -c 2 fakedomainthatisntreal.dev)" == *"127.0.0.1"* ]]; 
 	then 
-		echo -e "$e_success For more details, see: https://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew"; 
+		echo -e "$e_success For more details, see: $s_ref"; 
 	else 
 		echo -e "$e_fail If it doesn't work right away, try turning WiFi off and on (or unplug/plug your ethernet cable), or reboot your system."; 
 		echo -e "$e_fail Then you can use this to test: 'ping -c 3 fakedomainthatisntreal.dev'";
-		echo -e "$e_fail For more details, see: https://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew"; 
+		echo -e "$e_fail For more details, see: $s_ref"; 
 		return;
 fi;
 ### /test *.dev routing ###
