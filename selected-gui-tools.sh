@@ -35,7 +35,13 @@ brew cask install gimp;
 ##
 ## visual source control
 brew cask install sourcetree;
-brew cask install svnx;
+# i wanna 'sourcetree ~/repos/<path>' so we can switch to or create new repos
+echo "
+# sourcetree
+alias sourcetree='open -a SourceTree ' 
+
+" >> ~/.profile; 
+brew cask install svnx; 
 ##
 ## productivity ##
 brew cask install alfred; 
