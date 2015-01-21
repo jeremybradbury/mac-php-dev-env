@@ -65,14 +65,27 @@ brew update && brew upgrade;
 # i said "let me introduce myself"
 echo -e "$e_info installing 'git'";
 brew install git;  
+# aliases
+echo "
+# git
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gsc='git rev-parse --short HEAD | xargs echo -n | pbcopy' # copy short commit hash to clipboard# MySQL
+alias mysql.start='brew services start mysql'
+alias mysql.stop='brew services stop mysql'
+alias mysql.restart='brew services restart mysql'
+
+" >> ~/.profile;
+
 ### /Mac Stuff ###
 #
 ### MySQL ###
 # i said "let me introduce myself"
-echo -e "$e_info installing MariaDB (the linux way)";
-# you are assumed to be smart, i just like to be clear
-echo -e "$e_warn please note the database 'root' user is NOT your system 'root' user.";
-echo -e "$e_warn having the same name, this can be a point of confusion.";
+echo -e "$e_info installing MySQL (the linux way)";
 brew install -v mysql;
 cp -v $(brew --prefix mysql)/support-files/my-default.cnf $(brew --prefix)/etc/my.cnf;
 cat >> $(brew --prefix)/etc/my.cnf <<'EOF'
@@ -87,8 +100,16 @@ sed -i '' 's/^#[[:space:]]*\(innodb_buffer_pool_size\)/\1/' $(brew --prefix)/etc
 ln -sfv $(brew --prefix mysql)/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/;
 # And start the database server:
 launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist;
-## Secure mysql 
+# Secure mysql 
 $(brew --prefix mysql)/bin/mysql_secure_installation;
+# aliases
+echo "
+# MySQL
+alias mysql.start='brew services start mysql
+alias mysql.stop='brew services stop mysql
+alias mysql.restart='brew services restart mysql
+
+" >> ~/.profile;
 ### /MySQL ###
 #
 ### Apache ### 
@@ -268,6 +289,17 @@ ${TAB}<string>root</string>
 </plist>
 EOF';
 sudo launchctl load -Fw /Library/LaunchDaemons/co.echo.httpdfwd.plist;
+# aliases
+echo "
+# Apache
+alias apache.start='brew services start httpd22'
+alias apache.stop='brew services stop httpd22'
+alias apache.restart='brew services restart httpd22'
+# Apache/PHP Logs
+alias www.error='tail -250f $(brew --prefix)/var/log/apache2/error_log'
+alias www.access='tail -250f $(brew --prefix)/var/log/apache2/access_log'
+
+" >> ~/.profile;
 ### /Apache ### 
 #
 ### PHP 5.6 ###
@@ -281,6 +313,13 @@ sed -i '' "s|^\(\[opcache\]\)$|\1"\\$'\n'"; Load the opcache extension"\\$'\n'"z
 # setup autostart
 ln -sfv $(brew --prefix php56)/*.plist ~/Library/LaunchAgents;
 launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.php56.plist;
+echo "
+# PHP-FPM
+alias php.start='brew services start php-fpm'
+alias php.stop='brew services stop php-fpm'
+alias php.restart='brew services restart php-fpm'
+
+" >> ~/.profile;
 ### /PHP 5.6 ###
 #
 ### DNSMasq ###
