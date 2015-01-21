@@ -38,3 +38,9 @@ brew cask install vagrant;
 brew cask install vagrant-manager;
 brew cask install vagrant-bar;
 brew cask install virtualbox;
+## manual post script ops ##
+# TODO: at the very least provide scripting/docs for these processes
+### setup office VPN
+### get Cisco AnyConnect
+### register paid stuff
+##
