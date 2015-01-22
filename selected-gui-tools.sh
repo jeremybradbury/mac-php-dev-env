@@ -14,7 +14,7 @@ brew cask install xquartz;
 ## browsers ##
 brew cask install multifirefox; # version/profile loader allowing multiple browser instances
 brew cask install firefox;
-brew cask install chrome;
+brew cask install google-chrome;
 brew cask install chrome-devtools;
 brew cask install google-chrome-canary; # requires: versions
 ##
