@@ -2,20 +2,16 @@
  
 ## cask.sh ## A dependancy include for checking/installing homebrew
 # cask - you need this - its a package manager for installing GUI tools
-if [[ $( brew cask list ) == *"Unknown command: cask"* ]]
-then
-	while true; do
-	    echo -e "$e_input do you wish to install 'homebrew cask' (you need this)?";
-		read -p "" yn;
-	    case $yn in
-	        [Yy]* ) brew install caskroom/cask/brew-cask;
-					break;; 
-			* ) break;;
-	    esac
-	done
-fi
-if $( brew cask list ) -ne *"Unknown command: cask"*;
-then
+echo "$s_info is 'homebrew-cask' installed?";
+brew cask list;
+while true; do
+    echo -e "$e_input do you wish to install 'homebrew-cask' (you’ll need this)?";
+    read -p "" yn
+    case $yn in
+        [Yy]* ) brew install caskroom/cask/brew-cask; echo "attempted"; break;; 
+        * ) break;;
+    esac
+done
 brew cask update;
 echo -e "$e_warn turn your head and cough!";
 brew cask doctor;
