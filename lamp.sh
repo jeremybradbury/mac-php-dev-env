@@ -118,13 +118,15 @@ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>
 brew install -v homebrew/apache/httpd22 --with-brewed-openssl --with-mpm-event;
 # fastcgi not mod_php
 brew install -v homebrew/apache/mod_fastcgi --with-brewed-httpd22;
+cp $(brew --prefix)/etc/apache2/2.2/httpd.conf $(brew --prefix)/etc/apache2/2.2/httpd.conf.bak;
+if 
 sed -i '' '/fastcgi_module/d' $(brew --prefix)/etc/apache2/2.2/httpd.conf;
-(export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; export MODFASTCGIPREFIX=$(brew --prefix mod_fastcgi) ; cat >> $(brew --prefix)/etc/apache2/2.2/httpd.conf <<EOF
+(cat >> $(brew --prefix)/etc/apache2/2.2/httpd.conf <<EOF
  
 # Echo & Co. changes
  
 # Load PHP-FPM via mod_fastcgi
-LoadModule fastcgi_module    ${MODFASTCGIPREFIX}/libexec/mod_fastcgi.so
+LoadModule fastcgi_module    $(brew --prefix mod_fastcgi)/libexec/mod_fastcgi.so
  
 <IfModule fastcgi_module>
   FastCgiConfig -maxClassProcesses 1 -idle-timeout 1500
@@ -149,7 +151,7 @@ LoadModule fastcgi_module    ${MODFASTCGIPREFIX}/libexec/mod_fastcgi.so
 </IfModule>
  
 # Include our VirtualHosts
-Include ${USERHOME}/Sites/httpd-vhosts.conf
+Include $(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}')/Sites/httpd-vhosts.conf
 EOF
 )
 mkdir -pv ~/Sites/{logs,ssl};
