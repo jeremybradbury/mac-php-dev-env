@@ -1,7 +1,7 @@
 #!/bin/sh
- 
 ## cask.sh ## A dependancy include for checking/installing homebrew
 # cask - you need this - its a package manager for installing GUI tools
+source colors.sh;
 echo "$s_info is 'homebrew-cask' installed?";
 brew cask list;
 while true; do

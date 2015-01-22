@@ -1,5 +1,4 @@
 #!/bin/sh
-#
 ## lamp.sh ## We are not using any mac/MAMP tools.
 # Instead we homebrew our own LAMP stack using standard linux folder locations.
 # The guys at echo have built a really good script, but it's in the form of read then copy (which is super nice!)
@@ -7,16 +6,9 @@
 # Based on: https://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew
 # And a few random other collections pulled from my brain and laptop at the bottom =]
 ##
-#
-### constants ###
-e_error='\x1b[31;01m[error]:\x1b[0m';            # red
-e_warn='\x1b[33;01m[warning]:\x1b[0m';           # yellow
-e_success='\x1b[32;01m[success]:\x1b[0m';        # green
-e_info='\x1b[30;01m[inform]:\x1b[0m';            # black
-e_input='\x1b[34;01m[input required]:\x1b[0m';   # blue
+source colors.sh;
 s_title='Customizable Homebrew LAMP Stack (for Mac OSX 10.10 Yosemite)';
 s_ref='https://echo.co/blog/os-x-1010-yosemite-local-development-environment-apache-php-and-mysql-homebrew';
-### /constants ###
 #
 ### intro ###
 echo -e "<\x1b[01mlamp.sh\x1b[0m>\x1b[01m";

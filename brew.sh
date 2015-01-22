@@ -1,7 +1,7 @@
 #!/bin/sh
-
 ## brew.sh ## A dependancy include for checking/installing homebrew
 # homebrew - you need this - its a package manager for installing command line tools
+source colors.sh;
 if [[ $(which brew) ]]
 then
     echo -e "$e_success 'homebrew' is already installed: $(which brew)";

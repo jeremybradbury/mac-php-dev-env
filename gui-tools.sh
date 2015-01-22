@@ -4,18 +4,10 @@
 # we use homebrew's caskroom to install browsers, editors and
 # other tools in the customizable file: selected-gui-tools.sh
 ##
-
-### constants ###
-e_error='\x1b[31;01m[error]:\x1b[0m';            # red
-e_warn='\x1b[33;01m[warning]:\x1b[0m';           # yellow
-e_success='\x1b[32;01m[success]:\x1b[0m';        # green
-e_info='\x1b[30;01m[inform]:\x1b[0m';            # black
-e_input='\x1b[34;01m[input required]:\x1b[0m';   # blue
+source colors.sh;
 s_title='Customizable Homebrew LAMP Stack (for Mac OSX 10.10 Yosemite)';
 s_ref='http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac';
-### /constants ###
-
-# "Welcome, let me introduce myself!"
+## "Welcome, let me introduce myself!"
 echo -e "<\x1b[01mgui-tools.sh\x1b[0m>\x1b[01m";
 echo -e "$s_title\x1b[0m";
 echo -e "based on: \x1b[34;04m$s_ref\x1b[0m";
@@ -28,15 +20,14 @@ echo -e "$e_success the tutorial above definitely has a discussion thread =]";
 echo -e "$e_success \x1b[30;01mplease DO\x1b[0m: contribute improvements and fork to version & store your setup =]";
 echo -e "$e_input Press [Enter] key to continue...";
 read
-
-### dependancies ###
+##
+## dependancies
 echo -e "$e_info checking dependancies";
 source xcode-clt.sh;
 source brew.sh;
 source cask.sh;
-### /dependancies ###
-
-# review/install customizable gui dev tools 
+## 
+## review/install customizable gui dev tools 
 echo -e "$e_info The following is an output of your customizable install script: selected-gui-tools.sh.";
 echo -e "$e_input Press [Enter] key to continue...";
 read
