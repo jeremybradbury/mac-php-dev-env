@@ -1,7 +1,11 @@
 #!/bin/sh
-
 ## selected-gui-tools.sh ## you should customize this for you
 # @see: https://github.com/caskroom/homebrew-cask/tree/master/Casks
+##
+## hey there!
+echo -e "$e_info You'll really want to fork me first, then edit =)";
+echo -e "$e_info Thus, creating yourself a custom provisioning tool via GitHub.";
+echo -e "$e_info When migrating, just import your home folder first, now it's become a powerful system recovery.";
 ##
 ## taps ##
 brew tap caskroom/versions;

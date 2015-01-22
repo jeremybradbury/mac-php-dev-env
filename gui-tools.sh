@@ -35,9 +35,6 @@ echo "*** BOF";
 cat selected-gui-tools.sh;
 echo
 echo "*** EOF";
-echo -e "$e_info You'll really want to fork me first, then edit =)";
-echo -e "$e_info Thus, creating yourself a custom provisioning tool via GitHub.";
-echo -e "$e_info When migrating, just import your home folder first, now it's become a powerful system recovery.";
 while true; do
     echo -e "$e_input are you sure you wish to install the selected GUI tools above?";
     read -p "" yn
