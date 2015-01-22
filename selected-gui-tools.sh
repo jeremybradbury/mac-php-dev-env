@@ -75,7 +75,7 @@ brew cask install vlc;
 #brew cask install parallels-desktop; # paid/trial
 brew cask install vagrant;
 brew cask install vagrant-manager;
-brew cask install vagrant-bar;
+#brew cask install vagrant-bar; # manager seems better
 brew cask install virtualbox;
 ## manual post script operations ##
 # TODO: at the very least provide scripting/docs for these processes
