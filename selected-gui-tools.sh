@@ -8,6 +8,9 @@ brew tap caskroom/versions;
 # i wanna 'brew cask search /font/' & 'brew cask install font-*' later, even if not below
 brew tap caskroom/fonts; # this is time consuming best get it out of the way now
 ##
+## backward compatibility
+brew cask install xquartz; 
+##
 ## browsers ##
 brew cask install multifirefox; # version/profile loader allowing multiple browser instances
 brew cask install firefox;
