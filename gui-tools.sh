@@ -21,8 +21,8 @@ echo -e "$e_success \x1b[30;01mplease DO\x1b[0m: contribute improvements and for
 echo -e "$e_input Press [Enter] key to continue...";
 read
 ##
-## dependancies
-echo -e "$e_info checking dependancies";
+## dependencies
+echo -e "$e_info checking dependencies";
 source xcode-clt.sh;
 source brew.sh;
 source cask.sh;

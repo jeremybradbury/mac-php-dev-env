@@ -1,5 +1,5 @@
 #!/bin/sh
-## brew.sh ## A dependancy include for checking/installing homebrew
+## brew.sh ## A dependency include for checking/installing homebrew
 # homebrew - you need this - its a package manager for installing command line tools
 source colors.sh;
 if [[ $(which brew) ]]
