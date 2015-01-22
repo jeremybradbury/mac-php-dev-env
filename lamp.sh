@@ -25,10 +25,9 @@ echo -e "$e_input Press [Enter] key to continue...";
 read
 ### /intro ###
 #
-### dependancies ###
-source xcode-clt.sh;
+### dependancy ###
 source brew.sh;
-### /dependancies ###
+### /dependancy ###
 #
 ### are you sure? ###
 # that you want to do all this? well probably...
