@@ -326,39 +326,6 @@ echo -e "$e_info For more details, see: $s_ref";
 echo -e "$e_input Press [enter] to continue"; 
 read
 ### /DNSMasq ###
-#
-### Dev Stuff ###
-# i said "let me introduce myself"
-echo -e "$e_info installing additional dev tools"
-# please modify or comment this line when changing the dev tools so the user (possibly you) isn't mislead
-echo -e "$e_info including: 'composer', 'behat', 'node', 'grunt', 'shifter', 'moodle-sdk', 'autoconf', & 'phpmyadmin'";
-echo -e "$e_info this script isn't interactive and assumes you've commented/removed stuff you don't want and added what you do";
-brew install composer;
-brew install behat;
-brew install node;  
-npm -g install grunt;  
-npm -g install shifter;   
-brew install moodle-sdk;
-## phpMyAdmin ##
-# Install autoconf which you need for the installation of phpMyAdmin
-brew install autoconf;
-# Set $PHP_AUTOCONF. For bash users
-echo "PHP_AUTOCONF='$(which autoconf)'" >> ~/.profile;
-# Install phpMyAdmin
-brew install phpmyadmin;
-## /phpMyAdmin ##
-## terminal ## 
-echo "
-# custom terminal
-export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ '
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-alias ls='ls -GFh'
-" >> ~/.profile;
-open jeremy.terminal; # i like my standard Terminal, but sexy like
-## /terminal ##
-### /Dev Stuff ###
-#
 ### cleanup ###  
 brew cleanup;
 echo
