@@ -77,4 +77,6 @@ brew cask install virtualbox;
 ### setup office VPN
 ### get Cisco AnyConnect
 ### register paid stuff
+### manage icon dock
+### setup chat and email
 ##
