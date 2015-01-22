@@ -52,7 +52,7 @@ brew cask alfred link; # alfred needs love too
 brew cask install charles # shareware
 brew cask install coderunner; # paid/trial $9.99
 brew cask install dash; # paid/trial $9.99
-brew cask install kaleidoscope; # paid/trial $69.99
+#brew cask install kaleidoscope; # paid/trial $69.99 # i have in the mac store instead =/
 ### kaleidoscope command line tools ###
 brew cask install ksdiff; 
 # i wanna make *everything* use kaleidoscope instead of opendiff
@@ -61,8 +61,8 @@ sudo mv $ORIG $(which opendiff).apple; # rename opendiff
 sudo ln -sfv $(which ksdiff) $ORIG; # point it to ksdiff
 ### /kaleidoscope command line tools ###
 brew cask install microsoft-office; # paid/trial
-brew cask install moom; # paid/trial $10.00
-#brew cask install openoffice;
+#brew cask install moom; # paid/trial $10.00 # i have in the mac store instead =/
+#brew cask install openoffice; # i use office
 brew cask install remote-desktop-connection; # m$ client
 brew cask install vlc;
 ##
