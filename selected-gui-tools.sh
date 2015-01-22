@@ -48,7 +48,8 @@ brew cask install svnx;
 ##
 ## productivity ##
 brew cask install alfred; 
-brew cask alfred link; # alfred needs love too
+# https://github.com/caskroom/homebrew-cask/issues/8052#issuecomment-70960767
+# brew cask alfred link; # deprecated if alfred doesn't find cask apps later: see above comment
 brew cask install charles # shareware
 brew cask install coderunner; # paid/trial $9.99
 brew cask install dash; # paid/trial $9.99
@@ -72,8 +73,10 @@ brew cask install vagrant;
 brew cask install vagrant-manager;
 brew cask install vagrant-bar;
 brew cask install virtualbox;
-## manual post script ops ##
+## manual post script operations ##
 # TODO: at the very least provide scripting/docs for these processes
+echo -e "$e_info please install Mac Store Apps"; # like this
+open /Applications/App\ Store.app;
 ### setup office VPN
 ### get Cisco AnyConnect
 ### register paid stuff
