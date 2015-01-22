@@ -16,11 +16,10 @@ brew cask update;
 echo -e "$e_warn turn your head and cough!";
 brew cask doctor;
 echo -e "$e_info you'll need to review the above and resolve any issues";
+echo -e "$e_info otherwise we're about to start the install";
 echo -e "$e_input is there any red? should we bail and come back?";
-read -p "" yn;
+read -p "" yn
 case $yn in
-[Yy]* ) return; break;; 
-* ) break;;
+    [Yy]* ) return;; 
+    * ) ;;
 esac
-# needed for backward compatibility
-brew cask install xquartz; 
