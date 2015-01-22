@@ -47,7 +47,7 @@ while true; do
     case $yn in
         [Yy]* ) break;;
 		[n]* ) echo "$e_info okay, okay. i get it. was it me?"; break;;
-		* ) echo "you quit... this time i win!"; return;;
+		* ) echo "you quit... i win... this time..."; return;;
     esac
 done
 ### /here we go! ###
@@ -66,7 +66,9 @@ brew update && brew upgrade;
 echo -e "$e_info installing 'git'";
 brew install git;  
 # aliases
-echo "
+echo "#homebrew
+export PATH='/usr/local/sbin:$PATH';
+
 # git
 alias gs='git status '
 alias ga='git add '
@@ -74,11 +76,7 @@ alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout '
-alias gsc='git rev-parse --short HEAD | xargs echo -n | pbcopy' # copy short commit hash to clipboard# MySQL
-alias mysql.start='brew services start mysql'
-alias mysql.stop='brew services stop mysql'
-alias mysql.restart='brew services restart mysql'
-
+alias gsc='git rev-parse --short HEAD | xargs echo -n | pbcopy' # copy short commit hash to clipboard
 " >> ~/.profile;
 
 ### /Mac Stuff ###
@@ -103,12 +101,10 @@ launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist;
 # Secure mysql 
 $(brew --prefix mysql)/bin/mysql_secure_installation;
 # aliases
-echo "
-# MySQL
-alias mysql.start='brew services start mysql
-alias mysql.stop='brew services stop mysql
-alias mysql.restart='brew services restart mysql
-
+echo "# MySQL
+alias mysql.start='brew services start mysql'
+alias mysql.stop='brew services stop mysql'
+alias mysql.restart='brew services restart mysql'
 " >> ~/.profile;
 ### /MySQL ###
 #
@@ -291,10 +287,10 @@ echo "# Apache
 alias apache.start='brew services start httpd22'
 alias apache.stop='brew services stop httpd22'
 alias apache.restart='brew services restart httpd22'
+
 # Apache/PHP Logs
 alias www.error='tail -250f $(brew --prefix)/var/log/apache2/error_log'
 alias www.access='tail -250f $(brew --prefix)/var/log/apache2/access_log'
-
 " >> ~/.profile;
 ### /Apache ### 
 #
@@ -314,7 +310,6 @@ echo "
 alias php.start='brew services start php-fpm'
 alias php.stop='brew services stop php-fpm'
 alias php.restart='brew services restart php-fpm'
-
 " >> ~/.profile;
 ### /PHP 5.6 ###
 #
@@ -359,7 +354,8 @@ echo "PHP_AUTOCONF='$(which autoconf)'" >> ~/.profile;
 brew install phpmyadmin;
 ## /phpMyAdmin ##
 ## terminal ## 
-echo "# custom terminal
+echo "
+# custom terminal
 export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ '
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
