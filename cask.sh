@@ -23,9 +23,6 @@ case $yn in
     [Yy]* ) return;; 
     * ) ;;
 esac
-
-echo -e "$e_warn we are about to run 'sudo echo' which will prompt you";
-echo -e "$e_warn for your password and print a note about what's next";
-echo -e "$e_info so you aren't promted during the script";
-echo -e "$e_info many of the apps you isntall will need to 'sudo'";
+echo -e "$e_warn 'sudo echo' will prompt you for your password now";
+echo -e "$e_info so (hopefully) you aren't promted during the script";
 sudo echo -e "$e_info now... go get some coffee or take a nap and come back";
