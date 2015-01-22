@@ -14,17 +14,17 @@ then
 		brew doctor;
 		while true; do
 		    echo -e "$e_input ignore this and try to move on (not recommended)?";
-		    read -p yn;
+		    read -p ":" yn
 		    case $yn in
 		        [Yy]* ) echo -e "$e_warn ignoring above 'brew doctor' complaints... "; return; break;;
-				* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; exit;;
+				* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; return break;;
 		    esac
 		done
 	fi
 else
 	while true; do
 	    echo -e "$e_input do you wish to install 'homebrew' (you need this)?";
-		read -p yn;
+		read -p ":" yn
 	    case $yn in
 	        [Yy]* ) ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; 
 					brew update && brew upgrade; 
@@ -41,12 +41,11 @@ else
 						    read yn2;
 						    case $yn2 in
 						        [Yy]* ) echo -e "$e_warn ignoring above 'brew doctor' complaints... "; return; break;;
-								* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; exit;;
+								* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; return; break;;
 						    esac
 						done
-					fi
-					break;; 
-			* ) break;;
+					fi;; 
+			* ) return; break;;
 	    esac
 	done
 fi 
