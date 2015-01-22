@@ -1,8 +1,10 @@
 #!/bin/sh
- 
 ## func.sh ## function library (a start)
-
-## a function to draw the menu 
+#
+## draw_menu() - a function to draw the menu 
+# based on: Draw-box.sh by Stefano Palmeri
+# found here: http://tldp.org/LDP/abs/html/colorizing.html#DRAW-BOX
+##
 draw_menu(){
 #=============#
 HORZ="~"
