@@ -8,7 +8,7 @@ then
     echo -e "$e_warn turn your head and cough!";
 	if [[ $(brew doctor) == *"ready to brew." ]]
 	then 
-		echo -e "$e_success you passed brew doctor's exam!"; return;
+		echo -e "$e_success you passed brew doctor's exam!";
 	else
 		echo -e "$e_error 'brew doctor' has some bad news: ";
 		brew doctor;
@@ -17,7 +17,7 @@ then
 		    read -p ":" yn
 		    case $yn in
 		        [Yy]* ) echo -e "$e_warn ignoring above 'brew doctor' complaints... "; return; break;;
-				* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; return break;;
+				* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; exit;;
 		    esac
 		done
 	fi
@@ -40,12 +40,12 @@ else
 						    echo -e "$e_input ignore this and try to move on (not recommended)?";
 						    read yn2;
 						    case $yn2 in
-						        [Yy]* ) echo -e "$e_warn ignoring above 'brew doctor' complaints... "; return; break;;
-								* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; return; break;;
+						        [Yy]* ) echo -e "$e_warn ignoring above 'brew doctor' complaints... "; break;;
+								* ) echo -e "$e_info Let's get this resolved, then try this again, shall we?"; exit;;
 						    esac
 						done
 					fi;; 
-			* ) return; break;;
+			* ) break;;
 	    esac
 	done
 fi 
