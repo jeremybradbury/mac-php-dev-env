@@ -65,19 +65,6 @@ brew update && brew upgrade;
 # i said "let me introduce myself"
 echo -e "$e_info installing 'git'";
 brew install git;  
-# aliases
-echo "#homebrew
-export PATH='/usr/local/sbin:$PATH';
-
-# git
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias go='git checkout '
-alias gsc='git rev-parse --short HEAD | xargs echo -n | pbcopy' # copy short commit hash to clipboard
-" >> ~/.profile;
 
 ### /Mac Stuff ###
 #
@@ -100,12 +87,6 @@ ln -sfv $(brew --prefix mysql)/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/
 launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist;
 # Secure mysql 
 $(brew --prefix mysql)/bin/mysql_secure_installation;
-# aliases
-echo "# MySQL
-alias mysql.start='brew services start mysql'
-alias mysql.stop='brew services stop mysql'
-alias mysql.restart='brew services restart mysql'
-" >> ~/.profile;
 ### /MySQL ###
 #
 ### Apache ### 
@@ -284,16 +265,6 @@ ${TAB}<string>root</string>
 </plist>
 EOF'
 sudo launchctl load -Fw /Library/LaunchDaemons/co.echo.httpdfwd.plist;
-# aliases
-echo "# Apache
-alias apache.start='brew services start httpd22'
-alias apache.stop='brew services stop httpd22'
-alias apache.restart='brew services restart httpd22'
-
-# Apache/PHP Logs
-alias www.error='tail -250f $(brew --prefix)/var/log/apache2/error_log'
-alias www.access='tail -250f $(brew --prefix)/var/log/apache2/access_log'
-" >> ~/.profile;
 ### /Apache ### 
 #
 ### PHP 5.6 ###
@@ -307,12 +278,6 @@ sed -i '' "s|^\(\[opcache\]\)$|\1"\\$'\n'"; Load the opcache extension"\\$'\n'"z
 # setup autostart
 ln -sfv $(brew --prefix php56)/*.plist ~/Library/LaunchAgents;
 launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.php56.plist;
-echo "
-# PHP-FPM
-alias php.start='brew services start php-fpm'
-alias php.stop='brew services stop php-fpm'
-alias php.restart='brew services restart php-fpm'
-" >> ~/.profile;
 ### /PHP 5.6 ###
 #
 ### DNSMasq ###
@@ -350,13 +315,49 @@ brew install moodle-sdk;
 ## phpMyAdmin ##
 # Install autoconf which you need for the installation of phpMyAdmin
 brew install autoconf;
-# Set $PHP_AUTOCONF. For bash users
-echo "PHP_AUTOCONF='$(which autoconf)'" >> ~/.profile;
 # Install phpMyAdmin
 brew install phpmyadmin;
 ## /phpMyAdmin ##
-## terminal ## 
-echo "
+## aliases & sexy terminal ## 
+# Set path in single quotes so we dont expand $PATH
+echo '
+
+#homebrew
+export PATH="/usr/local/sbin:$PATH"
+' >> ~/.profile;
+echo "# git
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gsc='git rev-parse --short HEAD | xargs echo -n | pbcopy' # copy short commit hash to clipboard
+
+# MySQL
+alias mysql.start='launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+alias mysql.stop='launchctl unload -Fw ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+alias mysql.restart='mysql.stop && mysql.start'
+
+# Apache (but agnostic alias in case i wanna nginx)
+alias web.start='launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.httpd22.plist'
+alias web.stop='launchctl unload -Fw ~/Library/LaunchAgents/homebrew.mxcl.httpd22.plist'
+alias web.restart='mysql.stop && mysql.start'
+alias web.log='tail -250f ~/Sites/logs/dev-error_log'
+alias web.access='tail -250f ~/Sites/logs/dev-access_log'
+
+# PHP-FPM
+alias php.start='launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.php56.plist'
+alias php.stop='launchctl unload -Fw ~/Library/LaunchAgents/homebrew.mxcl.php56.plist'
+alias php.restart='php.stop && php.start'
+alias php.log='tail -250f ~/Sites/logs/php-error_log'
+PHP_AUTOCONF='/usr/local/bin/autoconf'
+
+# DNSMasq
+alias dnsmasq.start='launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist'
+alias dnsmasq.stop='launchctl unload -Fw ~/Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist'
+alias dnsmasq.restart='dnsmasq.stop && dnsmasq.start'
+
 # custom terminal
 export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ '
 export CLICOLOR=1
@@ -364,7 +365,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 " >> ~/.profile;
 open jeremy.terminal; # i like my standard Terminal, but sexy like
-## /terminal ##
+## /aliases & sexy terminal ##
 ### /Dev Stuff ###
 #
 ### cleanup ###  
