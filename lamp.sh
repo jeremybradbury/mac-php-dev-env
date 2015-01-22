@@ -332,19 +332,12 @@ launchctl load -Fw ~/Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist
 sudo mkdir -v /etc/resolver 
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 sudo bash -c 'echo "port 35353" >> /etc/resolver/dev'
+echo -e "$e_info You can use this to test routing: 'ping -c 3 fakedomainthatisntreal.dev'";
+echo -e "$e_info If it doesn't work right away, try turning WiFi off and on (or unplug/plug your ethernet cable), or reboot your system."; 
+echo -e "$e_info For more details, see: $s_ref"; 
+echo -e "$e_input Press [enter] to continue"; 
+read
 ### /DNSMasq ###
-#
-### test *.dev routing ###
-if [[ "$(ping -c 2 fakedomainthatisntreal.dev)" == *"127.0.0.1"* ]]; 
-	then 
-		echo -e "$e_success For more details, see: $s_ref"; 
-	else 
-		echo -e "$e_fail If it doesn't work right away, try turning WiFi off and on (or unplug/plug your ethernet cable), or reboot your system."; 
-		echo -e "$e_fail Then you can use this to test: 'ping -c 3 fakedomainthatisntreal.dev'";
-		echo -e "$e_fail For more details, see: $s_ref"; 
-		return;
-fi;
-### /test *.dev routing ###
 #
 ### Dev Stuff ###
 # i said "let me introduce myself"
