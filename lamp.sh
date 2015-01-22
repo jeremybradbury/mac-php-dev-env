@@ -156,7 +156,7 @@ EOF
 )
 mkdir -pv ~/Sites/{logs,ssl};
 touch ~/Sites/httpd-vhosts.conf;
-(export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; cat > ~/Sites/httpd-vhosts.conf <<EOF
+(export USERHOME="/Users/$USER" ; cat > ~/Sites/httpd-vhosts.conf <<EOF
 #
 # Listening ports.
 #
@@ -172,7 +172,7 @@ NameVirtualHost *:8443
 #
 # Set up permissions for VirtualHosts in ~/Sites
 #
-<Directory "${USERHOME}/Sites">
+<Directory "$USERHOME/Sites">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
     Order allow,deny
@@ -182,12 +182,12 @@ NameVirtualHost *:8443
 # For http://localhost in the users' Sites folder
 <VirtualHost _default_:8080>
     ServerName localhost
-    DocumentRoot "${USERHOME}/Sites"
+    DocumentRoot "$USERHOME/Sites"
 </VirtualHost>
 <VirtualHost _default_:8443>
     ServerName localhost
-    Include "${USERHOME}/Sites/ssl/ssl-shared-cert.inc"
-    DocumentRoot "${USERHOME}/Sites"
+    Include "$USERHOME/Sites/ssl/ssl-shared-cert.inc"
+    DocumentRoot "$USERHOME/Sites"
 </VirtualHost>
  
 #
@@ -197,22 +197,22 @@ NameVirtualHost *:8443
 ## Manual VirtualHost template for HTTP and HTTPS
 #<VirtualHost *:8080>
 #  ServerName project.dev
-#  CustomLog "${USERHOME}/Sites/logs/project.dev-access_log" combined
-#  ErrorLog "${USERHOME}/Sites/logs/project.dev-error_log"
-#  DocumentRoot "${USERHOME}/Sites/project.dev"
+#  CustomLog "$USERHOME/Sites/logs/project.dev-access_log" combined
+#  ErrorLog "$USERHOME/Sites/logs/project.dev-error_log"
+#  DocumentRoot "$USERHOME/Sites/project.dev"
 #</VirtualHost>
 #<VirtualHost *:8443>
 #  ServerName project.dev
-#  Include "${USERHOME}/Sites/ssl/ssl-shared-cert.inc"
-#  CustomLog "${USERHOME}/Sites/logs/project.dev-access_log" combined
-#  ErrorLog "${USERHOME}/Sites/logs/project.dev-error_log"
-#  DocumentRoot "${USERHOME}/Sites/project.dev"
+#  Include "$USERHOME/Sites/ssl/ssl-shared-cert.inc"
+#  CustomLog "$USERHOME/Sites/logs/project.dev-access_log" combined
+#  ErrorLog "$USERHOME/Sites/logs/project.dev-error_log"
+#  DocumentRoot "$USERHOME/Sites/project.dev"
 #</VirtualHost>
  
 #
 # Automatic VirtualHosts
 #
-# A directory at ${USERHOME}/Sites/webroot can be accessed at http://webroot.dev
+# A directory at $USERHOME/Sites/webroot can be accessed at http://webroot.dev
 # In Drupal, uncomment the line with: RewriteBase /
 #
  
@@ -224,29 +224,29 @@ LogFormat "%V %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" comb
   ServerName dev
   ServerAlias *.dev
  
-  CustomLog "${USERHOME}/Sites/logs/dev-access_log" combinedmassvhost
-  ErrorLog "${USERHOME}/Sites/logs/dev-error_log"
+  CustomLog "$USERHOME/Sites/logs/dev-access_log" combinedmassvhost
+  ErrorLog "$USERHOME/Sites/logs/dev-error_log"
  
-  VirtualDocumentRoot ${USERHOME}/Sites/%-2+
+  VirtualDocumentRoot $USERHOME/Sites/%-2+
 </VirtualHost>
 <VirtualHost *:8443>
   ServerName dev
   ServerAlias *.dev
-  Include "${USERHOME}/Sites/ssl/ssl-shared-cert.inc"
+  Include "$USERHOME/Sites/ssl/ssl-shared-cert.inc"
  
-  CustomLog "${USERHOME}/Sites/logs/dev-access_log" combinedmassvhost
-  ErrorLog "${USERHOME}/Sites/logs/dev-error_log"
+  CustomLog "$USERHOME/Sites/logs/dev-access_log" combinedmassvhost
+  ErrorLog "$USERHOME/Sites/logs/dev-error_log"
  
-  VirtualDocumentRoot ${USERHOME}/Sites/%-2+
+  VirtualDocumentRoot $USERHOME/Sites/%-2+
 </VirtualHost>
 EOF
 )
-(export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; cat > ~/Sites/ssl/ssl-shared-cert.inc <<EOF
+(export USERHOME="/Users/$USER" ; cat > ~/Sites/ssl/ssl-shared-cert.inc <<EOF
 SSLEngine On
 SSLProtocol all -SSLv2 -SSLv3
 SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
-SSLCertificateFile "${USERHOME}/Sites/ssl/selfsigned.crt"
-SSLCertificateKeyFile "${USERHOME}/Sites/ssl/private.key"
+SSLCertificateFile "$USERHOME/Sites/ssl/selfsigned.crt"
+SSLCertificateKeyFile "$USERHOME/Sites/ssl/private.key"
 EOF
 )
 openssl req \
@@ -300,7 +300,7 @@ alias www.access='tail -250f $(brew --prefix)/var/log/apache2/access_log'
 # i said "let me introduce myself"
 echo -e "$e_info installing 'php56'";
 brew install -v homebrew/php/php56 --with-fpm --without-snmp;
-(export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; sed -i '-default' -e 's|^;\(date\.timezone[[:space:]]*=\).*|\1 \"'$(sudo systemsetup -gettimezone|awk -F"\: " '{print $2}')'\"|; s|^\(memory_limit[[:space:]]*=\).*|\1 512M|; s|^\(post_max_size[[:space:]]*=\).*|\1 200M|; s|^\(upload_max_filesize[[:space:]]*=\).*|\1 100M|; s|^\(default_socket_timeout[[:space:]]*=\).*|\1 600|; s|^\(max_execution_time[[:space:]]*=\).*|\1 300|; s|^\(max_input_time[[:space:]]*=\).*|\1 600|; $a\'$'\n''\'$'\n''; PHP Error log\'$'\n''error_log = '$USERHOME'/Sites/logs/php-error_log'$'\n' $(brew --prefix)/etc/php/5.6/php.ini);
+(export USERHOME="/Users/$USER" ; sed -i '-default' -e 's|^;\(date\.timezone[[:space:]]*=\).*|\1 \"'$(sudo systemsetup -gettimezone|awk -F"\: " '{print $2}')'\"|; s|^\(memory_limit[[:space:]]*=\).*|\1 512M|; s|^\(post_max_size[[:space:]]*=\).*|\1 200M|; s|^\(upload_max_filesize[[:space:]]*=\).*|\1 100M|; s|^\(default_socket_timeout[[:space:]]*=\).*|\1 600|; s|^\(max_execution_time[[:space:]]*=\).*|\1 300|; s|^\(max_input_time[[:space:]]*=\).*|\1 600|; $a\'$'\n''\'$'\n''; PHP Error log\'$'\n''error_log = '$USERHOME'/Sites/logs/php-error_log'$'\n' $(brew --prefix)/etc/php/5.6/php.ini);
 chmod -R ug+w $(brew --prefix php56)/lib/php; #Fix a pear and pecl permissions problem:
 pear config-set php_ini $(brew --prefix)/etc/php/5.6/php.ini system
 sed -i '' "s|^\(\[opcache\]\)$|\1"\\$'\n'"; Load the opcache extension"\\$'\n'"zend_extension=opcache.so"\\$'\n'"|; s|^;\(opcache\.enable[[:space:]]*=[[:space:]]*\)0|\11|; s|^;\(opcache\.memory_consumption[[:space:]]*=[[:space:]]*\)[0-9]*|\1256|;" $(brew --prefix)/etc/php/5.6/php.ini;
