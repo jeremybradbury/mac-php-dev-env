@@ -49,3 +49,6 @@ else
 	    esac
 	done
 fi 
+echo -e "$e_warn 'sudo echo' will prompt you for your password now";
+echo -e "$e_info so (hopefully) you aren't promted during the script";
+sudo echo -e "$e_info now... go get some coffee or take a nap and come back";

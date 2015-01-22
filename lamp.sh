@@ -115,9 +115,6 @@ alias mysql.restart='brew services restart mysql
 ### Apache ### 
 # i said "let me introduce myself"
 echo -e "$e_info installing 'apache' (the linux way and disabling mac 'apache')";
-# Cuz, I mean, who want's unexpected password prompts, like evar?
-echo -e "$e_warn you know Apache, the 'sudoing' starts here"
-echo -e "$e_warn you will be prompted (by your laptop) for your password";
 # Stop existing apache and stop it's auto start 
 sudo apachectl stop;
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null;
