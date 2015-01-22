@@ -365,7 +365,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 " >> ~/.profile;
-cp com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist;
+open jeremy.terminal; # i like my standard Terminal, but sexy like
 ## /terminal ##
 ### /Dev Stuff ###
 #
