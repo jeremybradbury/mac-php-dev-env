@@ -88,12 +88,12 @@ alias mysql.restart='brew services restart mysql'
 echo -e "$e_info installing MySQL (the linux way)";
 brew install -v mysql;
 cp -v $(brew --prefix mysql)/support-files/my-default.cnf $(brew --prefix)/etc/my.cnf;
-cat >> $(brew --prefix)/etc/my.cnf <<'EOF'
+cat >> $(brew --prefix)/etc/my.cnf <<EOF
  
 # Echo & Co. changes
 max_allowed_packet = 1073741824
 innodb_file_per_table = 1
-EOF;
+EOF
 sed -i '' 's/^#[[:space:]]*\(innodb_buffer_pool_size\)/\1/' $(brew --prefix)/etc/my.cnf;
 # Setup auto start
 [[ ! -d ~/Library/LaunchAgents ]] && mkdir -v ~/Library/LaunchAgents;
@@ -155,7 +155,7 @@ LoadModule fastcgi_module    ${MODFASTCGIPREFIX}/libexec/mod_fastcgi.so
 # Include our VirtualHosts
 Include ${USERHOME}/Sites/httpd-vhosts.conf
 EOF
-);
+)
 mkdir -pv ~/Sites/{logs,ssl};
 touch ~/Sites/httpd-vhosts.conf;
 (export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; cat > ~/Sites/httpd-vhosts.conf <<EOF
@@ -242,7 +242,7 @@ LogFormat "%V %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" comb
   VirtualDocumentRoot ${USERHOME}/Sites/%-2+
 </VirtualHost>
 EOF
-);
+)
 (export USERHOME=$(dscl . -read /Users/`whoami` NFSHomeDirectory | awk -F"\: " '{print $2}') ; cat > ~/Sites/ssl/ssl-shared-cert.inc <<EOF
 SSLEngine On
 SSLProtocol all -SSLv2 -SSLv3
@@ -250,7 +250,7 @@ SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
 SSLCertificateFile "${USERHOME}/Sites/ssl/selfsigned.crt"
 SSLCertificateKeyFile "${USERHOME}/Sites/ssl/private.key"
 EOF
-);
+)
 openssl req \
   -new \
   -newkey rsa:2048 \
@@ -284,11 +284,10 @@ ${TAB}<key>UserName</key>
 ${TAB}<string>root</string>
 </dict>
 </plist>
-EOF';
+EOF'
 sudo launchctl load -Fw /Library/LaunchDaemons/co.echo.httpdfwd.plist;
 # aliases
-echo "
-# Apache
+echo "# Apache
 alias apache.start='brew services start httpd22'
 alias apache.stop='brew services stop httpd22'
 alias apache.restart='brew services restart httpd22'
