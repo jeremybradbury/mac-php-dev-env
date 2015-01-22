@@ -20,8 +20,8 @@ brew cask install google-chrome-canary; # requires: versions
 ##
 ## editors & IDEs ##
 brew cask install sublime-text3; # requires: versions
-## i wanna 'sublime /etc/hosts' & 'sublime ~/repos/<folder>/' on a regular =]
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime; # command line tools
+## i wanna 'sublime /etc/hosts' & 'sublime ~/repos/<folder>/' on a regular =] (the brew cask way)
+mv /usr/local/bin/subl /usr/local/bin/sublime # rename command line tools
 brew cask install coda; # paid/trial
 ## i wanna 'coda /var/www/<folder>/' & 'coda < config.yaml > config_new.yaml' on a regular too =]
 brew install coda-cli; # command line tools: http://justinhileman.info/coda-cli/
