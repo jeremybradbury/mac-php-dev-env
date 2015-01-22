@@ -43,8 +43,9 @@ for (( r=$R; count<=$BOX_HEIGHT; r++)); do
 	    1 ) echo -e "    ""\x1b[01m$s_title\x1b[0m"; ;;
 	    2 ) echo -e "    1)import-user-files.sh"; ;;
 	    3 ) echo -e "    2)lamp.sh"; ;;
-	    4 ) echo -e "    3)gui-tools.sh"; ;;
-		5 ) echo -e "    4)import-db"; ;;
+		4 ) echo -e "    3)dev-tools.sh"; ;;
+	    5 ) echo -e "    4)gui-tools.sh"; ;;
+		6 ) echo -e "    5)import-db.sh"; ;;
 	    8 ) echo -e "    *)quit"; ;;
 	esac  
 	let count=count+1;

@@ -13,9 +13,11 @@ while true; do
     echo -e "$e_input what script would you like to run";
 	read -p "" scri;
     case $scri in
-	    l) source lamp.sh; return; break;;
-	    n) source nginx.sh; return; break;;
-        g) source gui-tools.sh; return; break;;
+	    1) source import-user-files.sh; return; break;;
+	    2) source lamp.sh; return; break;;
+		3) source dev-tools.sh; return; break;;
+        4) source gui-tools.sh; return; break;;
+		5) source import-db.sh; return; break;;
 		*) return; break;;
     esac
 done
