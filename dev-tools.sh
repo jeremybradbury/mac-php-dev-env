@@ -1,5 +1,5 @@
 #!/bin/sh
-## dev-tools.sh ###
+## dev-tools.sh ## CUSTOMIZE THIS FOR YOU!! ##
 source colors.sh;
 # "let me introduce myself"
 echo -e "$e_info installing additional dev tools (if you didn't install lamp.sh these wont work)"

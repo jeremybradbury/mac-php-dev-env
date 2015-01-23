@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/sh 
 source colors.sh;
-## selected-user-files.sh ## A wrapper for our user files import
+## selected-user-files.sh ## CUSTOMIZE THIS FOR YOU!! ##
 ##
 ## hello!
 echo -e "$e_info You'll really want to fork me first, then edit =)";

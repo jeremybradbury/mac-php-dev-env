@@ -1,5 +1,5 @@
 #!/bin/sh
-## selected-gui-tools.sh ## you should customize this for you
+## selected-gui-tools.sh ## CUSTOMIZE THIS FOR YOU!! ##
 # @see: https://github.com/caskroom/homebrew-cask/tree/master/Casks
 ##
 ## hey there!
