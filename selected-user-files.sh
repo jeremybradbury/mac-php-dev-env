@@ -11,18 +11,23 @@ echo -e "$e_warn make sure your backups aren't getting written to in 'selected-u
 echo -e "$e_input where is your backup file?";
 read -p ":" backup;
 #backup="~/Desktop/jeremy"; # manual override
-## R = recursive, p = preserve meta, n = never overrwite, v = verbose (tell me all about it)
-## selected destination files/folders
+## selected destinations
+### R = recursive
+### p = preserve file/user meta
+### n = never overrwite
+### v = verbose (tell me all about it)
+# folders
 cp -Rpnv $backup/Documents ~/Documents;
 cp -Rpnv $backup/Downloads ~/Downloads;
-cp -pnv $backup/Library/Keychains/login.keychain ~/Library/Keychains;
-cp -Rnv $backup/Library/Application\ Support ~/Library/Application\ Support
+cp -Rpnv $backup/Library/Application\ Support ~/Library/Application\ Support;
 cp -Rpnv $backup/Library/Fonts ~/Library/Fonts;
 cp -Rpnv $backup/Music ~/Music;
 cp -Rpnv $backup/Pictures ~/Pictures;
 cp -Rpnv $backup/.ssh ~/.ssh;
 cp -Rpnv $backup/.subversion ~/.subversion;
 cp -Rpnv $backup/.vagrant.d ~/.vagrant.d;
+# files
+cp -pnv $backup/Library/Keychains/login.keychain ~/Library/Keychains;
 cp -pnv $backup/.gitconfig ~;
 cp -pnv $backup/.gitignore_global ~;
 cp -pnv $backup/.profile ~;
