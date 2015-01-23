@@ -18,7 +18,7 @@ while true; do
         		source selected-user-files.sh; 
 				echo -e "$e_info end $s_title script"; 
 				break;;
-        * ) echo -e "$e_info yeah, you should only run this once"; break;;
+        * ) echo -e "$e_info aww, don't worry, this is overwrite free importing =]"; break;;
     esac
 done
 read;
