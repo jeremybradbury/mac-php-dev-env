@@ -6,10 +6,10 @@ s_title='Import User Files (designed in/for Mac OSX 10.10 Yosemite)';
 # selective user import script, as in: 
 ## (un)comment lines to '(un)select'
 ## add/change lines as needed
-echo -e "e_info you are about to read the import script and confirm."
-echo -e "e_inpur Press [enter] to continue... ";
+echo -e "$e_info you are about to read the import script and confirm."
+echo -e "$e_input Press [enter] to continue... ";
 read;
-cat selected-import.sh;
+cat selected-user-files.sh;
 while true; do
     echo -e "$e_input are you sure you wish to import to selected destination files/folders above?";
     read -p ":" yn
