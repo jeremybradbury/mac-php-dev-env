@@ -8,7 +8,8 @@ echo -e "$e_info Thus, creating yourself a custom provisioning tool via GitHub."
 ##
 ## select the backup folder
 echo -e "$e_warn make sure your backups aren't getting written to in 'selected-user-files.sh'";
-echo -e "$e_input where is your backup file?";
+echo -e "$e_warn dont use '~'' like this:~/Desktop/jeremy";
+echo -e "$e_input where is your old user folder (like this:/Users/jeremy/Desktop/jeremy)?"
 read -p ":" backup;
 #backup="~/Desktop/jeremy"; # manual override
 ## selected destinations
