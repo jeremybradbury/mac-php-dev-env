@@ -9,7 +9,7 @@ clear;
 draw_menu;
 echo "${scripts[0]}";
 while true; do
-    echo -e "$e_input what script would you like to run";
+    echo -e "$e_input what script would you like to run?";
 	read -p "" scri;
     case $scri in
 	    1) source import-user-files.sh; return; break;;
@@ -17,6 +17,6 @@ while true; do
 		3) source dev-tools.sh; return; break;;
         4) source gui-tools.sh; return; break;;
 		5) source import-db.sh; return; break;;
-		*) return; break;;
+		*) echo -e "$e_info you selected: NULL. Lame =[" return; break;;
     esac
 done
