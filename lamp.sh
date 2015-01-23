@@ -25,9 +25,9 @@ echo -e "$e_input Press [Enter] key to continue...";
 read
 ### /intro ###
 #
-### dependancy ###
+### dependency ###
 source brew.sh;
-### /dependancy ###
+### /dependency ###
 #
 ### are you sure? ###
 # that you want to do all this? well probably...

@@ -1,5 +1,4 @@
 #!/bin/sh
-
 ## install.sh ## installation wrapper menu for the script library
 # 
 ##
