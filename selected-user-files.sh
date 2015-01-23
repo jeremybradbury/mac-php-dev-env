@@ -16,11 +16,11 @@ read -p ":" backup;
 ### R = recursive
 ### p = preserve file/user meta
 ### n = never overrwite
-### v = verbose (tell me all about it)
+### v = verbose (tell me all about it, so i don't think it's stuck)
 # folders
 cp -Rpnv $backup/Documents ~/Documents;
 cp -Rpnv $backup/Downloads ~/Downloads;
-cp -Rpnv $backup/Library/Application\ Support ~/Library/Application\ Support;
+cp -Rpnv $backup/Library/Application\ Support ~/Library/Application\ Support; # this one can take a long time!
 cp -Rpnv $backup/Library/Fonts ~/Library/Fonts;
 cp -Rpnv $backup/Music ~/Music;
 cp -Rpnv $backup/Pictures ~/Pictures;
