@@ -110,7 +110,6 @@ brew install -v homebrew/apache/httpd22 --with-brewed-openssl --with-mpm-event;
 # fastcgi not mod_php
 brew install -v homebrew/apache/mod_fastcgi --with-brewed-httpd22;
 cp $(brew --prefix)/etc/apache2/2.2/httpd.conf $(brew --prefix)/etc/apache2/2.2/httpd.conf.bak;
-if 
 sed -i '' '/fastcgi_module/d' $(brew --prefix)/etc/apache2/2.2/httpd.conf;
 (cat >> $(brew --prefix)/etc/apache2/2.2/httpd.conf <<EOF
  
